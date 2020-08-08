@@ -1,11 +1,11 @@
 # --- Global -------------------------------------------------------------------
 O = out
 
-all: build test check-coverage lint  ## build, test, check coverage, lint
+all: backend frontend ## build test and lint frontend and backend
 	@if [ -e .git/rebase-merge ]; then git --no-pager log -1 --pretty='%h %s'; fi
 	@echo '$(COLOUR_GREEN)Success$(COLOUR_NORMAL)'
 
-clean:  ## Remove generated files
+clean::  ## Remove generated files
 	-rm -rf $(O)
 
 .PHONY: all clean
@@ -13,6 +13,8 @@ clean:  ## Remove generated files
 # --- Build --------------------------------------------------------------------
 # Build all subdirs of ./cmd, excluding those with a leading underscore.
 BIN = $(O)/covid19
+
+backend: build test check-coverage lint  ## build, test, check coverage, lint backend
 
 build: | $(O)  ## Build binary
 	go build -o $(BIN) ./backend
@@ -59,6 +61,31 @@ lint-with-docker:  ## Lint source code with docker image of golangci-lint
 		golangci-lint run
 
 .PHONY: lint lint-with-local lint-with-docker
+
+# --- Frontend ----------------------------------------------------------------
+frontend: frontend-lint frontend-build  ## Lint and build frontend
+
+serve: frontend-build ## Build app and serve
+	yarn serve
+
+dev: frontend-init  ## Start frontend development server
+	yarn dev
+
+frontend/node_modules:
+	yarn install
+
+frontend-init: frontend/node_modules
+
+frontend-lint: frontend-init  ## Lint frontend
+	yarn lint
+
+frontend-build: frontend-init  ## Build frontend
+	yarn build
+
+clean::
+	rm -rf frontend/node_modules frontend/public/build
+
+.PHONY: dev frontend-build frontend-init frontend-lint frontend serve
 
 # --- Utilities ----------------------------------------------------------------
 COLOUR_NORMAL = $(shell tput sgr0 2>/dev/null)

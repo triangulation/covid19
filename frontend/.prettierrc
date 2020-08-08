@@ -1,0 +1,12 @@
+{
+  "semi": false,
+  "useTabs": false,
+  "overrides": [
+    {
+      "files": "*.svelte",
+      "options": {
+        "parser": "html"
+      }
+    }
+  ]
+}

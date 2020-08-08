@@ -8,64 +8,64 @@ import { terser } from "rollup-plugin-terser"
 const production = !process.env.ROLLUP_WATCH
 
 export default {
-	input: "src/main.js",
-	output: {
-		sourcemap: true,
-		format: "iife",
-		name: "app",
-		file: "public/build/bundle.js"
-	},
-	plugins: [
-		svelte({
-			dev: !production,
-			css: css => css.write("public/build/bundle.css")
-		}),
+  input: "src/main.js",
+  output: {
+    sourcemap: true,
+    format: "iife",
+    name: "app",
+    file: "public/build/bundle.js",
+  },
+  plugins: [
+    svelte({
+      dev: !production,
+      css: (css) => css.write("public/build/bundle.css"),
+    }),
 
-		resolve({
-			browser: true,
-			dedupe: ["svelte"]
-		}),
-		commonjs(),
+    resolve({
+      browser: true,
+      dedupe: ["svelte"],
+    }),
+    commonjs(),
 
-		!production && serve(),
-		!production && livereload("public"),
-		production && terser(),
-		production && copyToOut()
-	],
-	watch: {
-		clearScreen: false
-	}
+    !production && serve(),
+    !production && livereload("public"),
+    production && terser(),
+    production && copyToOut(),
+  ],
+  watch: {
+    clearScreen: false,
+  },
 }
 
 function copyToOut() {
-	return {
-		writeBundle() {
-			fs.copySync("public", "../out/public")
-		}
-	}
+  return {
+    writeBundle() {
+      fs.copySync("public", "../out/public")
+    },
+  }
 }
 
 function serve() {
-	let server
+  let server
 
-	function toExit() {
-		if (server) server.kill(0)
-	}
+  function toExit() {
+    if (server) server.kill(0)
+  }
 
-	return {
-		writeBundle() {
-			if (server) return
-			server = require("child_process").spawn(
-				"npm",
-				["run", "start", "--", "--dev"],
-				{
-					stdio: ["ignore", "inherit", "inherit"],
-					shell: true
-				}
-			)
+  return {
+    writeBundle() {
+      if (server) return
+      server = require("child_process").spawn(
+        "npm",
+        ["run", "start", "--", "--dev"],
+        {
+          stdio: ["ignore", "inherit", "inherit"],
+          shell: true,
+        }
+      )
 
-			process.on("SIGTERM", toExit)
-			process.on("exit", toExit)
-		}
-	}
+      process.on("SIGTERM", toExit)
+      process.on("exit", toExit)
+    },
+  }
 }

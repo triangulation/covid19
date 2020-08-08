@@ -13,6 +13,8 @@ optimised for size.
 - [go](https://golang.org/doc/go1.14),
 - [golangci-lint](https://github.com/golangci/golangci-lint/releases/tag/v1.23.6),
 - GNU make
+- node v14.7.0
+- yarn v1.22.4
 
 ## Development
 

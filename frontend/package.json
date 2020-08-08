@@ -1,6 +1,7 @@
 {
-  "name": "svelte-app",
-  "version": "1.0.0",
+  "name": "covid19",
+  "version": "0.0.1",
+  "license": "Apache-2.0",
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c -w",

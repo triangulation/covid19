@@ -1,33 +1,29 @@
-<script>
-  export let name
-</script>
-
 <main>
-  <h1>Hello {name}!</h1>
-  <p>
-    Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn
-    how to build Svelte apps.
-  </p>
+  <h1>COVID 19 stats</h1>
+  <div>
+    Chart
+  </div>
 </main>
 
 <style>
   main {
-    text-align: center;
-    padding: 1em;
-    max-width: 240px;
     margin: 0 auto;
+    padding: 0.5em;
+    text-align: center;
   }
-
   h1 {
-    color: #ff3e00;
-    text-transform: uppercase;
-    font-size: 4em;
-    font-weight: 100;
+    font-size: 2.25rem;
+    font-weight: 400;
+    padding: 0;
+    margin: 0;
   }
 
-  @media (min-width: 640px) {
+  @media (min-width: 40em) {
     main {
-      max-width: none;
+      padding: 1rem;
+    }
+    h1 {
+      font-size: 3rem;
     }
   }
 </style>

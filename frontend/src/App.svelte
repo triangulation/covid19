@@ -1,8 +1,10 @@
+<script>
+  import Chart from "./Chart.svelte"
+</script>
+
 <main>
   <h1>COVID 19 stats</h1>
-  <div>
-    Chart
-  </div>
+  <Chart />
 </main>
 
 <style>

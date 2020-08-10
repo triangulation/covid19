@@ -5,7 +5,7 @@
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c -w",
-    "lint": "prettier --check 'src/**' public/index.html rollup.config.js",
+    "lint": "prettier --check 'src/**' public/index.html public/global.css rollup.config.js",
     "serve": "sirv ../out/public",
     "start": "sirv public"
   },

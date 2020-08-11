@@ -13,6 +13,7 @@ clean::  ## Remove generated files
 # --- Build --------------------------------------------------------------------
 # Build all subdirs of ./cmd, excluding those with a leading underscore.
 BIN = $(O)/covid19
+STUB = frontend/src/data.js
 
 backend: build test check-coverage lint  ## build, test, check coverage, lint backend
 
@@ -21,6 +22,10 @@ build: | $(O)  ## Build binary
 
 run: build  ## Run binary with testdata
 	$(BIN) < backend/testdata/data.csv
+
+data: build  ## Fetch covid-19 CSV data and parse it into api stub
+	printf "export const data = " > $(STUB)
+	curl https://raw.githubusercontent.com/datasets/covid-19/master/data/time-series-19-covid-combined.csv | $(BIN) >> $(STUB)
 
 .PHONY: build run
 

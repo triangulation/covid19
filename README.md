@@ -3,7 +3,7 @@
 covid-19 extracts and transforms covid-19 time-series data, with the goal
 of visualising it in an intuitive and performant way.
 
-Data source: [github.com/datasets/covid-19/data/time-series-19-covid-combined.csv](https://github.com/datasets/covid-19/raw/master/data/time-series-19-covid-combined.csv)
+Data source: [github.com/datasets/covid-19/data/time-series-19-covid-combined.csv](https://raw.githubusercontent.com/datasets/covid-19/master/data/time-series-19-covid-combined.csv)
 
 Target: JSON or Proto with time series data of covid stats per country
 optimised for size.

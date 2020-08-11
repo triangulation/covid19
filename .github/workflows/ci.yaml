@@ -33,6 +33,7 @@ jobs:
     - uses: actions/setup-node@v1
       with:
         node-version: '14.7'
+    - run: make data
     - run: make frontend-build
     - run: mv out/public out/pr${{ github.event.number }}
     - uses: GoogleCloudPlatform/github-actions/upload-cloud-storage@master

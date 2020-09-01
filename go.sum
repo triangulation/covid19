@@ -1,5 +1,7 @@
 foxygo.at/s v0.0.22 h1:CEOn+AYReUx9Q3/uZWtnQsPHAtXzlrOO/uPD40afqp4=
 foxygo.at/s v0.0.22/go.mod h1:R96b/7A/GMocNKLuCsF0dkz2HbV9egy6XafPAHPKw8Q=
+foxygo.at/s v0.0.31 h1:lq9ifLO0GbGFns0x+gSK88hUR7XmiHC463PSCTDr2Ss=
+foxygo.at/s v0.0.31/go.mod h1:R96b/7A/GMocNKLuCsF0dkz2HbV9egy6XafPAHPKw8Q=
 github.com/davecgh/go-spew v1.1.0 h1:ZDRjVQ15GmhC3fiQ8ni8+OwkZQO4DARzQgrnXU1Liz8=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
